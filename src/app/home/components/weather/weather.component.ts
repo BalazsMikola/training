@@ -15,13 +15,13 @@ import { User } from '../../../shared/models/user';
 })
 export class WeatherComponent implements OnInit {
 
-  username: string = '';
-  chartData: Object[] = [];
-  weatherData: Object[] = [];
-  dayBydayData: Object = {};
+  username = '';
+  chartData = [];
+  weatherData = [];
+  dayBydayData = {};
   selectedCityTab: FormControl = new FormControl(0);
   selectedDayTab: FormControl = new FormControl(0);
-  inputErrorMessage: string = '';
+  inputErrorMessage = '';
 
   constructor(
     private dataAccessService: DataAccessService,

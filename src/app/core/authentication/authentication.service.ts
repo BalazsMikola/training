@@ -20,10 +20,28 @@ export class AuthenticationService {
     return this.dataAccessService.readUserNameFromLocalStorage();
   }
 
+
+  getCurrentUserData(username: string): object {
+    return this.dataAccessService.getUserDataFromDB(username);
+  }
+
+
+  updateCurrentUsersCities(user: string, order: object): void {
+    const userData: object = this.getCurrentUserData(user);
+    if (order['add']) {
+      userData['cities'].push(order['add'])
+    } else {
+      userData['cities'].splice(userData['cities'].indexOf(order['remove']), 1);
+    }
+    this.dataAccessService.updateUsersCities(userData);
+  }
+
+
   settingsAfterLogin(username: string): void {
     this.dataAccessService.saveUserNameToLocalStorage(username);
     this.router.navigate(['/']);
   }
+
 
   login(username: string, password: string): void {
     const userData: object = this.dataAccessService.getUserDataFromDB(username);
@@ -37,6 +55,12 @@ export class AuthenticationService {
         alert('Wrong username or password');
       }
     }
+  }
+
+
+  logout(): void {
+    localStorage.removeItem('currentUsername');
+    this.router.navigate(['/login']);
   }
 
 }

@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, forkJoin } from 'rxjs';
 
 import { User } from '../../shared/models/user';
+import { environment } from '../guards/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataAccessService {
 
-  constructor() {
+  private env: string =  environment.APIKey;
+
+  constructor(private http: HttpClient) {
   }
 
   readUserNameFromLocalStorage(): string {
@@ -64,6 +69,28 @@ export class DataAccessService {
       return null;
     }
   }
+
+  updateUsersCities(userData: object): void {
+    let dataBase: object = this.getDataBaseFromLocalStorage();
+    dataBase[userData['username']] = userData;
+    this.saveDataBaseToLocalStorage(dataBase);
+  }
+
+  getCityByName(cityName: string): Observable<object> {
+    return this.http.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.env}`);
+  }
+
+  getWeatherDataForSeveralCities(cities: number[]): Observable<object> {
+    return this.http.get(`http://api.openweathermap.org/data/2.5/group?id=${cities}&appid=${this.env}&units=metric`);
+  }
+
+  getForecastForAllCities(cityIDs: number[]): Observable<any> {
+    const listOfLinks = cityIDs.map(id => {
+      return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${this.env}&units=metric`);
+    });
+    return forkJoin(listOfLinks);
+  }
+
 
 
 }

@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../../core/authentication/authenticati
 export class LoginComponent implements OnInit {
 
   submitted = false;
-  private loginForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,

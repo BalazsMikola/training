@@ -1,23 +1,30 @@
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.username.errors }" />
-        <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
-            <div *ngIf="form.username.errors.required">Username is required</div>
+<div class="login_container">
+  <div class="content">
+    <div class="header">
+      <p class="message">Welcome</p>
+      <img src="../../../../assets/logo.png" class="logo" alt="weatherApp">
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.username.errors }" />
+            <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
+                <div *ngIf="form.username.errors.required">Username is required</div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
-        <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
-            <div *ngIf="form.password.errors.required">Password is required</div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
+            <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                <div *ngIf="form.password.errors.required">Password is required</div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary">
-            Login
-        </button>
-    </div>
-</form>
+        <div class="form-group">
+            <button class="btn btn-primary">
+                Login
+            </button>
+        </div>
+    </form>
+  </div>
+</div>
 

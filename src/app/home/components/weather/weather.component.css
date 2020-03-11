@@ -1,5 +1,24 @@
+.container {
+  background-color: white;
+  margin-top: 10px;
+  padding: 0;
+  box-shadow: 0px 0px 10px 0px rgba(32, 32, 32, 0.8);
+  background-color: white;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
+
+.message {
+  font-weight: bolder;
+  font-size: 20px;
+  padding-top: 2%;
+}
+
 .logoutButton{
-  font-size: 50px;
+  font-size: 30px;
   color: blue;
   cursor: pointer;
 }
@@ -8,26 +27,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid rgb(196, 190, 190);
+  border-bottom: 1px solid rgb(196, 190, 190);
+  padding: 0 3% 0 3%;
 }
 
 .searchDiv{
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
-h3{
-  font-weight: normal;
+.customCol {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.addButton {
+  border-radius: 0;
+  width: 150px;
 }
 
 .inputField{
-  width: 100%;
+  width: 400px;
   height: 40px;
   padding-left: 10px;
+
+  outline: none;
+  border: 0;
+  border-bottom: 1px rgb(190, 190, 190) solid
 }
 
-.mainDiv{
-  border: 1px rgb(201, 200, 200) solid;
+.inputField:focus {
+  border-color: rgb(117, 117, 117);
+  box-shadow: none;
 }
 
 .weatherCard{
@@ -44,8 +76,16 @@ h3{
   max-width: 700px;
 }
 
+.icon {
+  width: 100px;
+}
+
 .main-tab{
   max-width: 800px;
+}
+
+.deleteTabDiv {
+  display: flex;
 }
 
 .delete-tab-button{
@@ -67,7 +107,7 @@ h3{
 }
 
 .deleteIcon{
-  font-size: 60px;
+  font-size: 40px;
   color: rgb(189, 11, 11);
 }
 

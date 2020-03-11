@@ -101,6 +101,7 @@ export class WeatherComponent implements OnInit {
     let weatherListOfCities: object[] = data[0]['list']
     let forecastListOfCities: object = data[1]
     let result: object[] = [];
+    console.log(weatherListOfCities[0]);
     for (let i: number = 0; i < weatherListOfCities.length; i++) {
       result.push({
         'id': weatherListOfCities[i]['id'],
@@ -109,9 +110,11 @@ export class WeatherComponent implements OnInit {
         'humidity': weatherListOfCities[i]['main']['humidity'],
         'pressure': weatherListOfCities[i]['main']['pressure'],
         'wind': weatherListOfCities[i]['wind'],
+        'icon': `http://openweathermap.org/img/w/${weatherListOfCities[i]['weather'][0]['icon']}.png`,
         'forecast': this.createDayByDayForecast(forecastListOfCities[i]['list'])
       });
     }
+    console.log(result);
     return result;
   }
 

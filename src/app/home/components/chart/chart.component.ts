@@ -17,10 +17,11 @@ export class ChartComponent implements OnInit {
   yAxisLabel: string = 'celsius°';
   colorScheme: Object = { domain: ['#5542ff'] };
   showLabels: boolean = true;
-  showDataLebel: boolean = true
-  roundDomains: boolean = true
-  yScaleMin: number = 0
-  roundEdges: boolean = false
+  showDataLebel: boolean = true;
+  roundDomains: boolean = true;
+  yScaleMin: number = 0;
+  roundEdges: boolean = false;
+  showGridLines: boolean = false;
 
   constructor() { }
 

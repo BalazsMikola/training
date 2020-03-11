@@ -1,17 +1,14 @@
 <div class="container">
 
   <div class="row headerDiv">
-    <h4>Welcome {{ username }}!</h4>
+    <p class="message">Welcome {{ username }}!</p>
     <i class="material-icons logoutButton" (click)="onLogout()">exit_to_app</i>
   </div>
 
   <div class="row searchDiv">
-    <h3>Check Weather by City</h3>
-    <div class="col-8 customCol">
-      <input #newCity type="text"  [placeholder]="inputErrorMessage || 'New York'" class="inputField">
-    </div>
-    <div class="col-4 customCol">
-      <button (click)="addCity(newCity.value); newCity.value=''; newCity.placeholder='New York' " class="btn btn-primary addButton">
+    <div>
+      <input #newCity type="text"  [placeholder]="inputErrorMessage || 'Check Weather by City'" class="inputField">
+      <button (click)="addCity(newCity.value); newCity.value=''; newCity.placeholder='Check Weather by City' " class="btn btn-primary addButton">
         Get the Weather!
       </button>
     </div>
@@ -25,14 +22,25 @@
       <mat-tab *ngFor="let data of weatherData; let index = index" [label]="data.city" class="cityTabs">
 
         <div class="weatherCard">
-          <div class="col-6 cityName">
+          <div class="col-5 cityName">
             <h3>{{data.city}}</h3>
             <p>{{data.temp}} °C</p>
           </div>
-          <div class="col-6 cityData">
+          <div class="col-2 weatherIcon">
+            <img [src]= "data.icon" alt="weather icon" class="icon">
+          </div>
+          <div class="col-4 cityData">
             <p>Humidity: {{data.humidity}}%</p>
             <p>Pressure: {{data.pressure}} hPa</p>
             <p>Wind: {{data.wind.speed}} km/h</p>
+          </div>
+          <div class="col-1 delete">
+            <button mat-raised-button
+              class="delete-tab-button"
+              [disabled]="weatherData.length === 1"
+              (click)="removeCity(data.id,index)">
+              <i class="material-icons deleteIcon" [class.disable]="weatherData.length === 1">clear</i>
+            </button>
           </div>
         </div>
 
@@ -44,19 +52,9 @@
               </mat-tab>
             </mat-tab-group>
           </div>
-
-          <div class="removeButtonDiv">
-            <button mat-raised-button
-              class="delete-tab-button"
-              [disabled]="weatherData.length === 1"
-              (click)="removeCity(data.id,index)">
-              <i class="material-icons deleteIcon" [class.disable]="weatherData.length === 1">delete_forever</i>
-            </button>
-          </div>
         </div>
       </mat-tab>
     </mat-tab-group>
   </div>
-
 </div>
 

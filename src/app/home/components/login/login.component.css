@@ -31,8 +31,29 @@ input{
   justify-content: center;
   justify-items: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .logo {
   height: 60px;
+}
+
+.form-control {
+  margin: 20px 0 20px 0;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px rgb(190, 190, 190) solid;
+}
+
+.form-control:focus {
+  border-color: rgb(117, 117, 117);
+  box-shadow: none;
+}
+
+.btn {
+  margin-top: 40px;
+  width: 100%;
+  border-radius: 40px;
+  background: linear-gradient(to right, #0084f7 0,#6d0bff 100%);
 }
